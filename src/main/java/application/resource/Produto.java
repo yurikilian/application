@@ -15,7 +15,7 @@ public class Produto extends ResourceSupport {
 
     private String nome;
 
-    private double preco;
+    private Long preco;
 
     private String descricao;
 
@@ -27,11 +27,11 @@ public class Produto extends ResourceSupport {
         this.nome = nome;
     }
 
-    public double getPreco() {
+    public Long getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(Long preco) {
         this.preco = preco;
     }
 
