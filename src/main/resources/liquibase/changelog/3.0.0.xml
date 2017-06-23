@@ -1,0 +1,44 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="1" author="yuri.kilian">
+		<createTable tableName="categoria">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="nome" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="descricao" type="varchar(120)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="2" author="yuri.kilian">
+		<insert tableName="categoria">
+			<column name="id" value="1" />
+			<column name="nome" value="Ferramentas" />
+			<column name="descricao" value="Ferramentas em geral" />
+		</insert>
+		
+		<rollback>
+			<delete tableName="categoria">
+				<where>
+					<column name="id" value="1"></column>
+				</where>
+			</delete>			
+		</rollback>
+	</changeSet>
+	
+	<changeSet id="3" author="yuri.kilian">
+		<addColumn tableName="produto">
+			<column name="categoria_id" type="bigint" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="yuri.kilian" id="2.0.0.tag">
+		<tagDatabase tag="2.0.0" />
+	</changeSet>
+
+</databaseChangeLog>

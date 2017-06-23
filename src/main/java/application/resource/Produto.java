@@ -9,13 +9,15 @@ import org.springframework.hateoas.ResourceSupport;
 
 @Entity
 public class Produto extends ResourceSupport {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String nome;
+
     private double preco;
+
+    private String descricao;
 
     public String getNome() {
         return nome;
@@ -33,5 +35,12 @@ public class Produto extends ResourceSupport {
         this.preco = preco;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
 }
